@@ -105,8 +105,8 @@ Environment:
 
 After you connect Atlas / Render / Vercel (and push this repo to GitHub), record:
 
-- **App URL:** _(your Vercel URL)_
-- **API URL:** _(your Render URL)_
+- **App URL:** _https://lead-management-platform-nine.vercel.app/_
+- **API URL:** _https://lead-management-platform-server.onrender.com_
 - **API docs:** `Backend/README.md` in this repo
 
 Use the demo credentials above for each role.
