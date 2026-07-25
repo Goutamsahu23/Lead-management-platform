@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f4f7f8;
+  --foreground: #0f1c1f;
+  --surface: #ffffff;
+  --ink: #0f1c1f;
+  --muted: #5b6b70;
+  --teal: #0f766e;
+  --teal-dark: #0b534c;
+  --line: #d7e0e3;
+  --accent: #0d9488;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  color: var(--foreground);
+  background:
+    radial-gradient(1200px 500px at 10% -10%, rgba(13, 148, 136, 0.12), transparent 55%),
+    radial-gradient(900px 400px at 100% 0%, rgba(15, 28, 31, 0.06), transparent 50%),
+    var(--background);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-source-serif), Georgia, serif;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-teal-700 text-white hover:bg-teal-800;
+  }
+
+  .btn-secondary {
+    @apply btn border border-[var(--line)] bg-white text-slate-800 hover:bg-slate-50;
+  }
+
+  .btn-danger {
+    @apply btn bg-rose-700 text-white hover:bg-rose-800;
+  }
+
+  .input {
+    @apply w-full rounded-md border border-[var(--line)] bg-white px-3 py-2 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600/20;
+  }
+
+  .label {
+    @apply mb-1 block text-sm font-medium text-slate-700;
+  }
+
+  .panel {
+    @apply rounded-xl border border-[var(--line)] bg-white/90 p-5 shadow-sm backdrop-blur;
+  }
+
+  .app-shell {
+    background:
+      radial-gradient(900px 420px at 100% -10%, rgba(15, 118, 110, 0.08), transparent 50%),
+      radial-gradient(700px 360px at 0% 0%, rgba(15, 28, 31, 0.04), transparent 45%),
+      #eef3f4;
+  }
+
+  .stat-tile {
+    @apply rounded-2xl border border-slate-200/80 bg-white/90 p-5 shadow-sm transition hover:border-teal-300/70;
+  }
+
+  .table-shell {
+    @apply overflow-x-auto rounded-2xl border border-slate-200/80 bg-white/95 shadow-sm;
+  }
+
+  .table-head {
+    @apply border-b border-slate-200 bg-slate-50/90 text-slate-500;
+  }
+
+  .table-row {
+    @apply border-b border-slate-100 last:border-0 transition hover:bg-teal-50/30;
+  }
+}
+
+/* Landing page motion + atmosphere */
+.landing-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
+
+.landing-sheen {
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.08) 45%,
+    transparent 70%
+  );
+  background-size: 220% 100%;
+  animation: landing-sheen 8s ease-in-out infinite;
+}
+
+.landing-row {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: landing-row-in 0.7s ease forwards;
+}
+
+.landing-reveal {
+  animation: landing-reveal 0.9s ease both;
+}
+
+@keyframes landing-sheen {
+  0%,
+  100% {
+    background-position: 100% 0;
+  }
+  50% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes landing-row-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes landing-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-sheen,
+  .landing-row,
+  .landing-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
